@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,8 +26,16 @@ namespace Exam_001
             //Question_11();
             //Question_12();
             //Question_13(); 
-            Question_14();
-
+            //Question_14();
+            //Question_15();
+            //Question_16();
+            //Question_17();
+            //Question_18();
+            //Question_19();
+            //Question_20();
+            //Question_21();
+            //Question_22();
+            Question_23();
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }
@@ -353,26 +362,239 @@ namespace Exam_001
 
         static void Question_17()
         {
-            int[,] matrix_a, matrix_b = new int[5, 5];
-            int[,] iniatiallizad_matrix_a ={
-                { 1,2,3,4,5},
-                { 6,7,8,9,10},
-                { 11,12,13,14,15},
-                { 16,17,18,19,20},
-                { 21,22,23,24,25}
-            };
-            int[,] iniatiallizad_matrix_b ={
-                { 1,2,3,4,5},
-                { 6,7,8,9,10},
-                { 11,12,13,14,15},
-                { 16,17,18,19,20},
-                { 21,22,23,24,25}
-            };
+            int usr_input = 0;
+            Console.WriteLine("!!!Matrix 5 x 5 multiplication!!!");
+            //Console.WriteLine("Option 1 for simple or 2 for enter your own matrix");
+            //Console.Write("Choose 1 or 2 : ");
+            //usr_input = Convert.ToInt32(Console.ReadLine());
+            Random random = new Random();
+            int[,] matrix_a = new int[5, 5];
+            int[,] matrix_b = new int[5, 5];
+            int[,] matrix_sum = new int[5, 5];
+            int mode = 0;
+            do
+            {
+                if (mode == 1) { Console.WriteLine("\nX\n"); }
+                if (mode == 2) { Console.WriteLine("\nResult is :\n"); }
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.Write("[");
+                    for (int j = 0; j < 5; j++)
+                    {
+                        if (mode == 0)
+                        {
+                            matrix_a[i, j] = random.Next(0, 10);
+                            matrix_b[i, j] = random.Next(0, 10);
+                            matrix_sum[i, j] = matrix_a[i, j];
+                            Console.Write($"{matrix_sum[i, j]} ");
+                        }
+                        else if (mode == 1)
+                        {
+                            matrix_sum[i, j] = matrix_b[i, j];
+                            Console.Write($"{matrix_sum[i, j]} ");
+                        }
+                        else
+                        {
+                            matrix_sum[i, j] = 0;
+                            for (int k = 0; k < 5; k++)
+                            {
+                                matrix_sum[i, j] += matrix_a[i, k] * matrix_b[k, j];
+                            }
+                            Console.Write($"{matrix_sum[i, j]} ");
+                        }
+                    }
+                    Console.Write("]");
+                    Console.WriteLine();
+                }
+                mode++;
+            } while (mode != 3);
+            Console.WriteLine();
+        }
 
+        static void Question_18()
+        {
+            Random random = new Random();
+            int[,] matrix_source = new int[5,5];
+            int[,] matrix_result = new int[5, 5];
+            int mode = 0;
+            do
+            {
+                if (mode == 1) { Console.WriteLine(); }
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.Write("[");
+                    for (int j = 0; j < 5; j++)
+                    {
+                        if (mode == 0)
+                        {
+                            matrix_source[i, j] = random.Next(0, 10);
+                            matrix_result[i,j] = matrix_source[i, j];
+                            Console.Write($"{matrix_source[i, j]} ");
+                        }
+                        else
+                        {
+                            matrix_result[i, j] = matrix_source[j, i];
+                            Console.Write($"{matrix_result[i, j]} ");
+                        }
+                    }
+                    Console.Write("]");
+                    Console.WriteLine();
+                }
+                mode++;
+            }while(mode <2);
 
+            
 
-            ///Hello world
 
         }
+
+        static void Question_19() 
+        {
+            Console.WriteLine("Average value of n numbers between 10 - 30 ");
+            Console.WriteLine("Enter * for exit the program :");
+            int count = 0;
+            double sum=0;
+            string usr_input;
+            do
+            {
+                Console.Write("Enter number : ");
+                usr_input = Console.ReadLine();
+                if (usr_input == "*") { break; }
+                if (double.TryParse(usr_input, out double number) )
+                {
+                    
+                    sum+=(double)number;
+                    count++;
+                }
+                else { Console.WriteLine("Error invalid input !!"); }
+                
+            }
+            while (usr_input != "*");
+            Console.WriteLine("Asterisk is activated ");
+            Console.WriteLine($"You enter {count} total numbers\nAverage value is :{sum/count}");
+
+        }
+
+        static void Question_20() 
+        {
+            Console.WriteLine("Least value of n numbers that you enter between 10 - 30 ");
+            Console.WriteLine("Enter * for exit the program :");
+            int count = 0;
+            List<double> data= new List<double>();
+            string usr_input;
+            do
+            {
+                Console.Write("Enter number : ");
+                usr_input = Console.ReadLine();
+                if (usr_input == "*") { break; }
+                if (double.TryParse(usr_input, out double number))
+                {
+
+                    data.Add(number);
+                    count++;
+                }
+                else { Console.WriteLine("Error invalid input !!"); }
+
+            }
+            while (usr_input != "*");
+            data.Sort();
+            Console.WriteLine("Asterisk is activated ");
+            if (string.IsNullOrEmpty(usr_input)) { Console.WriteLine($"You enter {count} total numbers\nLeast value is :{data[0]}"); }
+
+
+        }
+
+        static void Question_21()
+        {
+            Console.WriteLine("Odd or even number , you can enter 10 positive numbers ");
+            string usr_input;
+            int count = 1;
+            List<double> odds= new List<double>();
+            List<double> evens = new List<double>();
+            do
+            {
+                Console.Write($"Enter positive number{count} : ");
+                usr_input = Console.ReadLine();
+                if (double.TryParse(usr_input, out double number) && number >= 0)
+                {
+                    if (number % 2 == 0) { evens.Add(number); }
+                    else {  odds.Add(number); }
+                    count++;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid number ");
+                }
+            }
+            while (count !=11);
+            Console.WriteLine($"You enter {evens.Count} even numbers and {odds.Count} odd numbers");
+            Console.Write($"Even number is ");
+            foreach (var item in evens)
+            {
+                Console.Write($"{item} ");
+            }
+            Console.WriteLine();
+        }
+
+        static void Question_22()
+        {
+            Console.WriteLine("Odd or even number , you can enter 10 positive numbers ");
+            string usr_input;
+            int count = 1;
+            List<double> odds = new List<double>();
+            List<double> evens = new List<double>();
+            do
+            {
+                Console.Write($"Enter positive number{count} : ");
+                usr_input = Console.ReadLine();
+                if (double.TryParse(usr_input, out double number) && number >= 0)
+                {
+                    if (number % 2 == 0) { evens.Add(number); }
+                    else { odds.Add(number); }
+                    count++;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid number ");
+                }
+            }
+            while (count != 11);
+            Console.WriteLine($"You enter {evens.Count} even numbers and {odds.Count} odd numbers");
+            Console.Write($"Odd number is ");
+            foreach (var item in odds)
+            {
+                Console.Write($"{item} ");
+            }
+            Console.WriteLine();
+        }
+
+        static void Question_23()
+        {
+            Console.WriteLine("Enter matrix 5x5 that program will convert to matrix 5x1 by multiply each item in row");
+            string usr_input;
+            double[,] matrix = new double[5, 5];
+            double[,] matrix_result = new double[5, 1];
+            int mode = 0;
+            for (int i = 0; i < 5; i++) 
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    if(mode==0)
+                    { 
+                        matrix_result[i, 0] = 0;
+                    JumpPoint:
+                        Console.Write($"Enter number[{i}][{j}] : ");
+                        usr_input = Console.ReadLine();
+                        if (double.TryParse(usr_input, out double number))
+                        {
+                            matrix[i, j] = number;
+                            matrix_result[i, 0] += number;
+                        }
+                        else
+                        { Console.WriteLine("Invalid number!!"); goto JumpPoint; }
+                    }
+                }
+            }
+        } // not done yet
     }
 }

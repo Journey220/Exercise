@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ExceptionServices;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,7 +36,18 @@ namespace Exam_001
             //Question_20();
             //Question_21();
             //Question_22();
-            Question_23();
+            //Question_23();
+            //Question_24();
+            //Question_25();
+            //Question_26();
+            //Question_27();
+            //Question_28();
+            //Question_29();
+            //Question_30();
+            //Question_31();
+            //Question_32();
+            Question_33();
+
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }
@@ -362,7 +374,6 @@ namespace Exam_001
 
         static void Question_17()
         {
-            int usr_input = 0;
             Console.WriteLine("!!!Matrix 5 x 5 multiplication!!!");
             //Console.WriteLine("Option 1 for simple or 2 for enter your own matrix");
             //Console.Write("Choose 1 or 2 : ");
@@ -574,14 +585,11 @@ namespace Exam_001
             string usr_input;
             double[,] matrix = new double[5, 5];
             double[,] matrix_result = new double[5, 1];
-            int mode = 0;
             for (int i = 0; i < 5; i++) 
             {
+                matrix_result[i, 0] = 0;
                 for (int j = 0; j < 5; j++)
                 {
-                    if(mode==0)
-                    { 
-                        matrix_result[i, 0] = 0;
                     JumpPoint:
                         Console.Write($"Enter number[{i}][{j}] : ");
                         usr_input = Console.ReadLine();
@@ -592,9 +600,228 @@ namespace Exam_001
                         }
                         else
                         { Console.WriteLine("Invalid number!!"); goto JumpPoint; }
-                    }
+                    
                 }
             }
-        } // not done yet
+            for (int i = 0; i < 5; i++) 
+            {
+                Console.Write($"[{matrix_result[i, 0]}]\n");
+            }
+        }
+
+        static void Question_24()
+        {
+            Console.WriteLine("Enter matrix 5x5 that program will convert to matrix 5x1 by multiply each item in row");
+            string usr_input;
+            double[,] matrix = new double[5, 5];
+            double[,] matrix_result = new double[5, 1];
+            double sum = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                matrix_result[i, 0] = 0;
+                for (int j = 0; j < 5; j++)
+                {
+                JumpPoint:
+                    Console.Write($"Enter number[{i}][{j}] : ");
+                    usr_input = Console.ReadLine();
+                    if (double.TryParse(usr_input, out double number))
+                    {
+                        matrix[i, j] = number;
+                        matrix_result[i, 0] += number;
+                    }
+                    else
+                    { Console.WriteLine("Invalid number!!"); goto JumpPoint; }
+                }
+                sum += matrix_result[i, 0];
+            }
+            Console.WriteLine($"Your average is {sum / 25}");
+        }
+
+        static void Question_25() 
+        {
+            string usr_input;
+            int count = 0;
+            Console.WriteLine("Count lower ");
+            Console.Write("Enter you word : ");
+            usr_input = Console.ReadLine() ;
+            
+            char[] user_array = usr_input.ToArray();
+            for (int i=0;i < user_array.Length;i++) 
+            {
+                 if (char.IsLower(user_array[i]) && user_array[i]!= ' ') { count++;  }
+            }
+            Console.WriteLine($"You data is  : {usr_input} and contains {count} lowercase letters");
+        }
+        static void Question_26()
+        {
+            string usr_input;
+            int count = 0;
+            Console.WriteLine("Count upper ");
+            Console.Write("Enter you word : ");
+            usr_input = Console.ReadLine();
+
+            char[] user_array = usr_input.ToArray();
+            for (int i = 0; i < user_array.Length; i++)
+            {
+                if (char.IsUpper(user_array[i]) && user_array[i] != ' ') { count++; }
+            }
+            Console.WriteLine($"You data is  : {usr_input} and contains {count} uppercase letters");
+        }
+
+        static void Question_27() 
+        {
+            Question_8();
+        }
+        static void Question_28()
+        {
+            Question_6();
+        }
+
+        static void Question_29()
+        {
+            string usr_input;
+            char[] usr_array;
+            char temp;
+            Console.WriteLine("This program will show the lowest ASCII number!!!");
+            Console.Write("Say something ? : ");
+            usr_input = Console.ReadLine();
+            usr_array = usr_input.ToArray();
+            temp = usr_array[0];
+            for (int i = 0; i < usr_array.Length; i++)
+            {
+                Console.WriteLine($"{usr_array[i]} {Convert.ToInt32(usr_array[i])} ");
+                if (Convert.ToInt32(usr_array[i]) < Convert.ToInt32(temp)) { temp = usr_array[i]; }
+            } 
+            Console.WriteLine($"You lowest ASCII is {temp} and value is {Convert.ToInt32(temp)}");
+        }
+
+        static void Question_30() 
+        {
+            string usr_input;
+            char[] usr_array;
+            char temp;
+            Console.WriteLine("This program will show the lowest ASCII number!!!");
+            Console.Write("Say something ? : ");
+            usr_input = Console.ReadLine();
+            usr_array = usr_input.ToArray();
+            temp = usr_array[0];
+            for (int i = 0; i < usr_array.Length; i++)
+            {
+                Console.WriteLine($"{usr_array[i]} {Convert.ToInt32(usr_array[i])} ");
+                if (Convert.ToInt32(usr_array[i]) > Convert.ToInt32(temp)) { temp = usr_array[i]; }
+            }
+            Console.WriteLine($"You greatest ASCII is {temp} and value is {Convert.ToInt32(temp)}");
+        }
+
+        static void Question_31() 
+        {
+            string usr_input;
+            char[] usr_array;
+            Console.WriteLine("This program will replace a with Z");
+            Console.Write("What's on you mind ? : ");
+            usr_input = Console.ReadLine();
+            usr_array= usr_input.ToArray();
+            for (int i = 0; i < usr_array.Length; i++)
+            {
+                if (usr_array[i] == 'a') { usr_array[i] = 'Z'; }
+            }
+            usr_input = string.Join("", usr_array);
+            Console.WriteLine(usr_input);
+
+            
+        }
+
+        static void Question_32() 
+        {
+            string usr_input;
+            char[] usr_array;
+            Console.WriteLine("Inverse word lower <> upper");
+            Console.Write("What's on you mind ? :");
+            usr_input = Console.ReadLine();
+            usr_array= usr_input.ToArray();
+            for (int i = 0; i < usr_array.Length; i++)
+            {
+                if (char.IsLower(usr_array[i])) { usr_array[i] = char.ToUpper(usr_array[i]); }
+                else if (char.IsUpper(usr_array[i])){ usr_array[i] = char.ToLower(usr_array[i]); }
+                else { continue; }
+            }
+            Console.WriteLine($"Your enter {usr_input} and inverse is : {string.Join("", usr_array)}");
+        }
+
+        static void Question_33()
+        {
+            string usr_input;
+            char[] usr_array;
+            int maxFrequency;
+            Console.WriteLine("Frequency analysis program");
+            Console.Write("Do you have a word ? : ");
+            usr_input = Console.ReadLine();
+            usr_array = usr_input.ToArray();
+
+            Dictionary<char, int> frequencyMap = new Dictionary<char, int>();
+
+            foreach (char c in usr_array)
+            {
+                if (frequencyMap.ContainsKey(c))
+                {
+                    frequencyMap[c]++;
+                }
+                else
+                {
+                    frequencyMap[c] = 1;
+                }
+            }
+            maxFrequency = frequencyMap.Values.Max();
+            var greatestFrequencyChars = frequencyMap.Where(pair => pair.Value == maxFrequency).Select(pair => pair.Key);
+            Console.WriteLine("Character frequencies");
+            foreach (var pair in frequencyMap)
+            {
+                Console.WriteLine($"{pair.Key} : {pair.Value}");
+            }
+
+            Console.WriteLine("Character(s) with the greatest frequency : ");
+            foreach (var c in greatestFrequencyChars)
+            {
+                Console.WriteLine($"{c}");
+            }
+        }
+
+        static void Question_34()
+        {
+            string usr_input;
+            char[] usr_array;
+            int minFrequency;
+            Console.WriteLine("Frequency analysis program");
+            Console.Write("Do you have a word ? : ");
+            usr_input = Console.ReadLine();
+            usr_array= usr_input.ToArray();
+
+            Dictionary<char,int> frequencyMap = new Dictionary<char,int>();
+
+            foreach (char c in usr_array)
+            {
+                if (frequencyMap.ContainsKey(c))
+                {
+                    frequencyMap[c]++;
+                }
+                else 
+                { 
+                    frequencyMap[c] = 1; 
+                }
+            }
+            minFrequency = frequencyMap.Values.Min();
+            var leastFrequencyChars = frequencyMap.Where(pair => pair.Value == minFrequency).Select(pair => pair.Key);
+            Console.WriteLine("Character frequencies");
+            foreach (var pair in frequencyMap)
+            {
+                Console.WriteLine($"{pair.Key} : {pair.Value}");
+            }
+
+            Console.WriteLine("Character(s) with the lowest frequency : ");
+            foreach (var c in leastFrequencyChars)
+            {
+                Console.WriteLine($"{c}");
+            }
+        }
     }
 }

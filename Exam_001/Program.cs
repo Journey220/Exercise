@@ -46,7 +46,8 @@ namespace Exam_001
             //Question_30();
             //Question_31();
             //Question_32();
-            Question_33();
+            //Question_33();
+            Question_34();
 
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
@@ -63,7 +64,7 @@ namespace Exam_001
             Array.Sort(usr_numbers);
             Array.Reverse(usr_numbers);
             Console.WriteLine($"Sorted number greatest to least is {usr_numbers[0]} , {usr_numbers[1]}");
-        } //done
+        } 
         static void Question_2()
         {
             double[] usr_numbers = new double[3];
@@ -75,7 +76,7 @@ namespace Exam_001
             }
             Array.Sort(usr_numbers);
             Console.WriteLine($"Leasted number is : {usr_numbers[0]}");
-        } //done
+        } 
 
         static void Question_3()
         {
@@ -118,7 +119,7 @@ namespace Exam_001
                 Console.WriteLine($"Income : {income}\nTax : {tax}");
             }
             Console.WriteLine("End of program :)");
-        } //done
+        } 
 
         static void Question_4()
         {
@@ -143,7 +144,7 @@ namespace Exam_001
             digit[3] = mod[2];
             sum = digit.Sum();
             Console.WriteLine($"Your number is {user_input}  and sum of digits is {sum}");
-        }// done
+        }
 
         static void Question_5()
         {
@@ -153,7 +154,7 @@ namespace Exam_001
             usr_input = Convert.ToInt32(Console.ReadLine());
             if (usr_input % 2 == 0) { Console.WriteLine($"You enter even number"); }
             else { Console.WriteLine($"You enter odd number"); }
-        } //done
+        } 
 
         static void Question_6()
         {
@@ -167,7 +168,7 @@ namespace Exam_001
             {
                 if (word[i] == 'a') { Console.WriteLine($"'a' in position {i + 1}"); break; }
             }
-        } //done
+        } 
 
         static void Question_7()
         {
@@ -187,7 +188,7 @@ namespace Exam_001
             Console.WriteLine(usr_input);
 
 
-        } //done
+        } 
 
         static void Question_8()
         {
@@ -203,14 +204,14 @@ namespace Exam_001
                 if (usr_chars[i] == ' ') { count++; }
             }
             Console.WriteLine($"You have {count} words");
-        } //done
+        } 
 
         static void Question_9()
         {
             string usr_input;
             int[] user_number = new int[4];
             int count = 0;
-            Console.WriteLine("Enter 4 number between 0 to 100 this program will display leasted number and your numbers");
+            Console.WriteLine("Enter 4 number between 0 to 100 this program will display least number and your numbers");
             do
             {
                 Console.Write($"Enter number {count + 1} : ");
@@ -220,10 +221,10 @@ namespace Exam_001
             }
             while (count != 4);
             Array.Sort(user_number);
-            Console.WriteLine($"Leasted number is :{user_number[0]}");
+            Console.WriteLine($"Least number is :{user_number[0]}");
             Console.WriteLine($"Your numbers is {user_number[0]},{user_number[1]},{user_number[2]},{user_number[3]}");
 
-        } //done
+        } 
 
         static void Question_10()
         {
@@ -240,9 +241,9 @@ namespace Exam_001
                 else { usr_number[count] = Convert.ToInt32(usr_input); count++; }
             } while (count != 4);
             Array.Sort(usr_number);
-            Console.WriteLine($"Greated number is {usr_number[0]}");
+            Console.WriteLine($"Greater number is {usr_number[0]}");
             Console.WriteLine($"Your numbers is {usr_number[0]},{usr_number[1]},{usr_number[2]},{usr_number[3]}");
-        } //done
+        } 
 
         static void Question_11()
         {
@@ -263,7 +264,7 @@ namespace Exam_001
                 else { Console.Write($"{usr_numbers[i]}"); }
             }
             Console.WriteLine();
-        } //done
+        } 
 
         static void Question_12()
         {
